@@ -14,6 +14,13 @@
             <organization>Faculty of Informatics, University of Debrecen</organization>
             <organizationUrl>https://www.inf.unideb.hu/</organizationUrl>
         </developer>
+        <developer>
+            <id>benedek99</id>
+            <name>Benedek Szabó</name>
+            <email>szabobenedek99@gmail.com</email>
+            <organization>Faculty of Informatics, University of Debrecen</organization>
+            <organizationUrl>https://www.inf.unideb.hu/</organizationUrl>
+        </developer>
     </developers>
     <scm>
         <url>https://github.com/jeszy75/jdbi-examples</url>
@@ -64,6 +71,12 @@
             <version>2.1.1</version>
             <scope>runtime</scope>
         </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.10</version>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
     <build>
         <plugins>
@@ -81,6 +94,38 @@
                 <groupId>com.github.johnpoth</groupId>
                 <artifactId>jshell-maven-plugin</artifactId>
                 <version>1.2</version>
+            </plugin>
+            <plugin>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok-maven-plugin</artifactId>
+                <version>1.18.10.0</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>delombok</goal>
+                        </goals>
+                        <phase>generate-sources</phase>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>1.6.0</version>
+                <executions>
+                    <execution>
+                        <id>console</id>
+                        <configuration>
+                            <mainClass>org.h2.tools.Console</mainClass>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>shell</id>
+                        <configuration>
+                            <mainClass>org.h2.tools.Shell</mainClass>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
